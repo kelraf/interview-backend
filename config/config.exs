@@ -30,6 +30,9 @@ config :cors_plug,
   max_age: 86400,
   methods: ["GET", "POST", "PUT", "DELETE"]
 
+  config :systemdev, Systemdev.Mailer,
+    adapter: Bamboo.LocalAdapter
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

@@ -28,4 +28,5 @@ defmodule Systemdev.Accounts.User do
         put_change(changeset, :password, Comeonin.Bcrypt.hashpwsalt(password))
     end
   end
+  
 end
