@@ -4,6 +4,7 @@ defmodule SystemdevWeb.UserController do
   alias Systemdev.Accounts
   alias Systemdev.Accounts.User
   alias Systemdev.Auth
+  alias Systemdev.Mailer
 
   action_fallback SystemdevWeb.FallbackController
 
@@ -28,6 +29,12 @@ defmodule SystemdevWeb.UserController do
 
   def create(conn, %{"user" => user_params}) do
     with {:ok, %User{} = user} <- Accounts.create_user(user_params) do
+
+      code = Enum.random(1_000..9_999)
+      email = user_params["email"]
+
+      Mailer.confirm_email email, code |> Mailer.deliver_now
+
       conn
       |> put_status(:created)
       |> put_resp_header("location", user_path(conn, :show, user))
