@@ -30,8 +30,10 @@ config :cors_plug,
   max_age: 86400,
   methods: ["GET", "POST", "PUT", "DELETE"]
 
-  config :systemdev, Systemdev.Mailer,
-    adapter: Bamboo.LocalAdapter
+config :systemdev, Systemdev.Mailer,
+  # adapter: Bamboo.LocalAdapter
+  adapter: Bamboo.SendgridAdapter,
+  api_key: "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"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
