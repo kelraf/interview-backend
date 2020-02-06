@@ -47,6 +47,7 @@ defmodule Systemdev.Mixfile do
       {:guardian, github: "ueberauth/guardian"},
       {:bamboo, "~> 0.7"},
       {:bamboo_smtp, "~> 1.2.1"}
+      # {:httpoison, "~> 1.6"}
     ]
   end
 
